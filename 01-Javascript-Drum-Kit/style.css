@@ -1,0 +1,71 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  background: linear-gradient(rgb(0 0 0 / 0.5), rgb(0 0 0 / 0.5)),
+    url("ingridi-alves-photograph-yePWDGPUWO0-unsplash.jpg");
+  background-size: cover, cover;
+  background-repeat: repeat, no-repeat;
+  color: white;
+  font-size: 14px;
+  font-family: sans-serif;
+}
+
+.keys {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+  flex-wrap: wrap;
+}
+
+.key {
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+  border: 3px solid white;
+  border-radius: 5px;
+  text-transform: uppercase;
+  transition: all 0.1s;
+  display: flex;
+  flex-direction: column;
+}
+
+.key span {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.letter {
+  font-size: 1.4rem;
+}
+
+.key.playing,
+.key:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  border: 3px solid orange;
+  box-shadow: 0 0 10px orange, inset 0 0 10px orange;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 5px 10px 20px 10px;
+}
+
+footer a {
+  color: orange;
+  text-decoration: none;
+}

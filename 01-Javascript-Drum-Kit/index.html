@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <section class="keys">
+      <div data-key="65" class="key">
+        <span class="letter">A</span>
+        <span class="sound">clap</span>
+      </div>
+
+      <div data-key="83" class="key">
+        <span class="letter">S</span>
+        <span class="sound">hihat</span>
+      </div>
+
+      <div data-key="68" class="key">
+        <span class="letter">D</span>
+        <span class="sound">kick</span>
+      </div>
+
+      <div data-key="70" class="key">
+        <span class="letter">F</span>
+        <span class="sound">openhat</span>
+      </div>
+
+      <div data-key="71" class="key">
+        <span class="letter">G</span>
+        <span class="sound">boom</span>
+      </div>
+
+      <div data-key="72" class="key">
+        <span class="letter">H</span>
+        <span class="sound">ride</span>
+      </div>
+
+      <div data-key="74" class="key">
+        <span class="letter">J</span>
+        <span class="sound">snare</span>
+      </div>
+
+      <div data-key="75" class="key">
+        <span class="letter">K</span>
+        <span class="sound">tom</span>
+      </div>
+
+      <div data-key="76" class="key">
+        <span class="letter">L</span>
+        <span class="sound">tink</span>
+      </div>
+    </section>
+
+    <audio data-key="65" src="sounds/clap.wav"></audio>
+    <audio data-key="83" src="sounds/hihat.wav"></audio>
+    <audio data-key="68" src="sounds/kick.wav"></audio>
+    <audio data-key="70" src="sounds/openhat.wav"></audio>
+    <audio data-key="71" src="sounds/boom.wav"></audio>
+    <audio data-key="72" src="sounds/ride.wav"></audio>
+    <audio data-key="74" src="sounds/snare.wav"></audio>
+    <audio data-key="75" src="sounds/tom.wav"></audio>
+    <audio data-key="76" src="sounds/tink.wav"></audio>
+
+    <footer>
+      <span
+        >Created by
+        <a href="https://twitter.com/@weybansky"
+          >Abdulwahab Nasir (@weybansky)</a
+        >
+        while going through
+        <a href="https://twitter.com/@wesbos">Wes Bos</a> Javascript30
+        Course.</span
+      >
+      <br /><br />
+      <span
+        >Photo by
+        <a
+          href="https://unsplash.com/@ingridi_alves?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
+          >Ingridi Alves Photograph</a
+        >
+        on
+        <a
+          href="https://unsplash.com/s/photos/drum-kit?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
+          >Unsplash</a
+        ></span
+      >
+    </footer>
+
+    <script>
+      window.addEventListener("keydown", playAudio);
+
+      function playAudio(e) {
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        if (!audio) return;
+        const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+        audio.currentTime = 0; // reset audio everytime key is pressed
+        audio.play();
+        key.classList.add("playing");
+      }
+
+      const keys = document.querySelectorAll(".key");
+      keys.forEach((key) => {
+        key.addEventListener("transitionend", endTransition);
+      });
+
+      function endTransition(e) {
+        if (e.propertyName !== "transform") return;
+        e.target.classList.remove("playing");
+      }
+    </script>
+  </body>
+</html>
