@@ -1,0 +1,95 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  min-width: 300px;
+  min-height: 300px;
+}
+
+.clock {
+  width: 300px;
+  height: 300px;
+}
+
+.clockface {
+  border: 10px double white;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 10px;
+  box-shadow: inset 0 0 5px 2px #9E9E9E, 0 0 10px 2px #9E9E9E;
+}
+
+.center {
+  width: 10px;
+  height: 10px;
+  border: 2px solid red;
+  background: linear-gradient(to left, red, white);
+  border-radius: 50%;
+  position: absolute;
+  z-index: 30;
+  top: 50%;
+  left: 50%;
+  transform: translate(-5px, -4px) rotate(90deg);
+}
+
+.hand {
+  background: white;
+  height: 2px;
+  width: 45%;
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform-origin: 103%;
+}
+
+.second-hand {
+  z-index: 30;
+  background: red;
+  transform: rotate(270deg);
+  transition: sll 0.05s ease-in-out;
+}
+
+.minute-hand {
+  z-index: 20;
+  background: green;
+}
+
+.hour-hand {
+  z-index: 10;
+  background: blue;
+}
+
+.numbers {
+  color: white;
+  position: absolute;
+  font-size: 1.5rem;
+}
+
+.number-12 {
+  top: 0;
+  left: 46%;
+}
+
+.number-3 {
+  top: 45%;
+  right: 5px;
+}
+
+.number-6 {
+  left: 48%;
+  bottom: 0;
+}
+
+.number-9 {
+  top: 45%;
+  left: 5px;
+}
