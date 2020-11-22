@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Updating CSS variable in JS</title>
+    <style>
+        :root {
+            --spacing: 10px;
+            --blur: 10px;
+            --color: orange;
+        }
+
+        body {
+            background: #333333;
+            color: white;
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        .h1 {
+            color: var(--color);
+        }
+
+        .controls {
+            margin-bottom: 4rem;
+        }
+
+        br {
+            content: '';
+            height: 1rem;
+            display: block;
+        }
+
+        img {
+            max-width: 70%;
+            width: 500px;
+            padding: var(--spacing);
+            background: var(--color);
+            filter: blur(var(--blur));
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            padding: 5px 10px 20px 10px;
+        }
+
+        footer a {
+            color: var(--color);
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Updating CSS variable in <span class="h1">JS</span></h1>
+    <div class="controls">
+        <label for="spacing">Spacing</label>
+        <input type="range" name="spacing" min="0" max="100" data-sizing="px" value="30">
+        <br>
+
+        <label for="spacing">Blur</label>
+        <input type="range" name="blur" min="0" max="50" data-sizing="px" value="10">
+        <br>
+
+        <label for="spacing">Color</label>
+        <input type="color" name="color" value="#ffa500">
+    </div>
+
+    <img src="ingridi-alves-photograph-yePWDGPUWO0-unsplash.jpg">
+
+    <footer>
+        <span>Created by
+            <a href="https://twitter.com/@weybansky">Abdulwahab Nasir (@weybansky)</a>
+            while going through
+            <a href="https://twitter.com/@wesbos">Wes Bos</a> Javascript30
+            Course.</span>
+        <br /><br />
+        <span>Photo by
+            <a
+                href="https://unsplash.com/@ingridi_alves?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Ingridi
+                Alves Photograph</a>
+            on
+            <a
+                href="https://unsplash.com/s/photos/drum-kit?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+    </footer>
+
+    <script>
+        const controls = document.querySelectorAll(".controls input");
+
+        function handleUpdate() {
+            const suffix = this.dataset.sizing || "";
+            document.documentElement.style.setProperty(`--${this.name}`, `${this.value+suffix}`);
+        }
+        
+        controls.forEach(control => {
+            control.addEventListener("change", handleUpdate);
+            control.addEventListener("mousemove", handleUpdate);
+        });
+
+    </script>
+
+</body>
+
+</html>
